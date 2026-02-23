@@ -5,26 +5,25 @@ import java.util.Scanner;
  * MAIN CLASS - PalindromeCheckerApp
  * ============================================================
  *
- * Use Case 3: Palindrome Check Using String Reverse
+ * Use Case 4: Character Array Based Palindrome Check
  *
  * Description:
  * This implementation checks whether a given string is
- * a palindrome by reversing the string and comparing it
- * with the original.
+ * a palindrome by converting the string into a character
+ * array and comparing elements using the two-pointer technique.
  *
  * Concepts Used:
- * - Scanner (User Input)
+ * - Scanner
  * - String
- * - for loop
- * - charAt()
- * - equals() method
- * - String concatenationmadam
+ * - char[]
+ * - Two-pointer approach
+ * - Loop control
  */
 
 public class PalindroneCheckerApp {
 
     /**
-     * Application entry point for UC3.
+     * Application entry point for UC4.
      *
      * @param args Command-line arguments
      */
@@ -35,21 +34,34 @@ public class PalindroneCheckerApp {
 
         // Take user input
         System.out.print("Enter a word: ");
-        String original = scanner.nextLine();
+        String input = scanner.nextLine();
 
-        // Variable to store reversed string
-        String reversed = "";
+        // Convert string to character array
+        char[] characters = input.toCharArray();
 
-        // Reverse the string using loop
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);
+        // Initialize two pointers
+        int start = 0;
+        int end = characters.length - 1;
+
+        boolean isPalindrome = true;
+
+        // Compare characters from both ends
+        while (start < end) {
+
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
         }
 
-        // Compare original and reversed strings
-        if (original.equals(reversed)) {
-            System.out.println(original + " is a Palindrome.");
+        // Display result
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome.");
         } else {
-            System.out.println(original + " is NOT a Palindrome.");
+            System.out.println(input + " is NOT a Palindrome.");
         }
 
         scanner.close();
