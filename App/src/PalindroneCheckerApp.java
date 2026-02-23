@@ -5,26 +5,26 @@ import java.util.Scanner;
  * MAIN CLASS - PalindromeCheckerApp
  * ============================================================
  *
- * Use Case 2: Hardcoded Palindrome Validation
+ * Use Case 3: Palindrome Check Using String Reverse
  *
  * Description:
- * This class demonstrates basic palindrome validation
- * using user input.
+ * This implementation checks whether a given string is
+ * a palindrome by reversing the string and comparing it
+ * with the original.
  *
- * At this stage, the application:
- * - Accepts a string from the user
- * - Compares characters from both ends
- * - Determines whether the string is a palindrome
- * - Displays the result on the console
- *
- * @author Developer
- * @version 2.0
+ * Concepts Used:
+ * - Scanner (User Input)
+ * - String
+ * - for loop
+ * - charAt()
+ * - equals() method
+ * - String concatenationmadam
  */
 
 public class PalindroneCheckerApp {
 
     /**
-     * Application entry point for UC2.
+     * Application entry point for UC3.
      *
      * @param args Command-line arguments
      */
@@ -35,25 +35,21 @@ public class PalindroneCheckerApp {
 
         // Take user input
         System.out.print("Enter a word: ");
-        String input = scanner.nextLine();
+        String original = scanner.nextLine();
 
-        // Assume it is palindrome initially
-        boolean isPalindrome = true;
+        // Variable to store reversed string
+        String reversed = "";
 
-        // Compare characters from both ends
-        for (int i = 0; i < input.length() / 2; i++) {
-
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        // Reverse the string using loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        // Display result
-        if (isPalindrome) {
-            System.out.println(input + " is a Palindrome.");
+        // Compare original and reversed strings
+        if (original.equals(reversed)) {
+            System.out.println(original + " is a Palindrome.");
         } else {
-            System.out.println(input + " is NOT a Palindrome.");
+            System.out.println(original + " is NOT a Palindrome.");
         }
 
         scanner.close();
